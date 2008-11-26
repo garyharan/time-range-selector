@@ -21,14 +21,15 @@ var TimeRange = Class.create({
         offsetLeft: this.field.offsetWidth + 10
       });
     
-    this.toggleTimeSlots = $R(this.options.startTime, this.options.endTime).collect(function(hour){
+    this.toggleTimes = $R(this.options.startTime, this.options.endTime).collect(function(hour){
       return $R(0, Math.floor(60 / tr.options.interval)-1).collect(function(minute){
         return hour + '.' + (Number(minute * tr.options.interval) / 60 * 100)
       }.bind(hour));
     })
     .flatten()
     .reject(function(time){ return time > tr.options.endTime })
-    .collect(function(slot) {
+    
+    this.toggleTimeSlots = this.toggleTimes.collect(function(slot) {
       var div = Builder.node('div').setStyle({
         border: '1px solid #dfdfdf',
         float: 'left',
@@ -38,16 +39,56 @@ var TimeRange = Class.create({
         height: '30px',
         fontSize: '9px',
         lineHeight: '30px',
-        background: '#f3f3f3'
+        background: '#f3f3f3',
+        cursor: 'crosshair'
       }).update(slot % 1 ? '' : Number(slot).toHour());
       div.setAttribute('title', Number(slot).toHour());
       div.addClassName('slot');
+      
+      div.time = slot; // eases pain down the road
+      
+      // handling the magic here.
+      div.observe('mouseover', function(event){ Event.element(event).setStyle({border: '1px dashed #333'})  }.bindAsEventListener(tr));
+      div.observe('mouseout', function(event){  Event.element(event).setStyle({border: '1px solid #dfdfdf'})}.bindAsEventListener(tr));
+      
+      div.observe('mousedown', function(event) {
+        tr.updateStartElement(Event.element(event));
+        tr.updateSelection(Event.element(event));
+        tr.active = true;
+        Event.stop(event);
+      }.bindAsEventListener(tr));
+      
+      $(document).observe('mouseup', function(event) {
+        tr.active = false;
+      }.bindAsEventListener(tr));
+      
+      div.observe('mousemove', function(event) {
+        if(tr.active == true){
+          tr.updateSelection(Event.element(event));
+        }
+      }.bindAsEventListener(tr))
+      
       return div;
     }).each(function(slot) {
       tr.container.appendChild(slot)
     });
     
     if (this.options.hideField){ this.field.hide(); }
+  },
+  updateSelection: function(element){
+    if (!this.active) return;
+    
+    this.toggleTimeSlots.each(function(slot){
+      if(slot.time >= Math.min(element.time, this.startElement.time) && slot.time <= Math.max(element.time, this.startElement.time)){
+        slot.setStyle({background: '#FF8'})
+      }else{
+        slot.setStyle({background: '#dfdfdf'})
+      }
+    }.bind(this));
+  },
+  updateStartElement: function(element){
+    this.startElement = element;
+    element.setStyle({background: '#FF8'})
   }
 });
 
