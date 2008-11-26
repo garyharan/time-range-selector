@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Time Range Selector Prototype</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.3/prototype.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.2/scriptaculous.js"></script>
+  <script type="text/javascript" charset="utf-8" src="time_range.js"></script>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen" title="Screen" charset="utf-8"/>
+</head>
+<body>
+  
+  <form action="time_range_prototype_submit" method="get" accept-charset="utf-8" id="time_range_form">
+    <p><label for="monday">   monday   </label><input id="monday"      name="monday"     type="text" class="time_range" value="08:30-11:30 13:30-16:00" /></p>
+    <p><label for="tuesday">  tuesday  </label><input id="tuesday"     name="tuesday"    type="text" class="time_range" value="08:30-11:30 13:30-16:00" /></p>
+    <p><label for="wednesday">wednesday</label><input id="wednesday"   name="wednesday"  type="text" class="time_range" value="08:30-11:30" /></p>
+    <p><label for="thursday"> thursday </label><input id="thursday"    name="thursday"   type="text" class="time_range" value="08:30-11:30 13:30-16:00" /></p>
+    <p><label for="friday">   friday   </label><input id="friday"      name="friday"     type="text" class="time_range" value="08:30-11:30 13:30-16:00" /></p>
+    <p><label for="saturday"> saturday </label><input id="saturday"    name="saturday"   type="text" class="time_range" value="10:30-11:30 13:30-15:00" /></p>
+    <p><label for="sunday">   sunday   </label><input id="sunday"      name="sunday"     type="text" class="time_range" value="13:30-16:00" /></p>
+    
+    <p><input type="submit" value="Continue &rarr;"/></p>
+  </form>
+</body>
+</html>
