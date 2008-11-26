@@ -7,3 +7,16 @@ label{
 .time_range{ 
   width:200px; 
 }
+
+
+/* change this style to affect size and color of time range elements  */
+
+.slot {
+  width: 20px;
+  background: #d0d0d0;
+  border: 1px solid #CCC;
+}
+
+.slot:hover {
+  background: #FF0;
+}
