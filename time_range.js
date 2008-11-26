@@ -93,7 +93,7 @@ var TimeRange = Class.create({
 });
 
 $(document).observe('dom:loaded', function(event){
-  [$$('.time_range').first()].each(function(field){
+  $$('.time_range').each(function(field){
     new TimeRange(field);
   });
 })
