@@ -1,7 +1,3 @@
-// TODO - afficher les ranges selectionne dans le field
-// TODO - appliquer l'heure du field dans le widget
-// TODO - deplacer le style dans des classes CSS separe
-
 var TimeRange = Class.create({
   initialize: function(field, options){
     this.field = field;
@@ -33,7 +29,7 @@ var TimeRange = Class.create({
       }.bind(hour));
     })
     .flatten()
-    .reject(function(time){ return time > tr.options.endTime })
+    .reject(function(time){ return time >= tr.options.endTime })
     
     this.toggleTimeSlots = this.toggleTimes.collect(function(slot) {
       var div = Builder.node('div').setStyle({
@@ -52,6 +48,11 @@ var TimeRange = Class.create({
       div.addClassName('slot');
       
       div.time = slot; // eases pain down the road
+      
+      var selected_ranges = $F(tr.field).split(' ').collect(function(range){ return range.split('-') }).each(function(range){
+        if (slot >= range[0].toDecimalHour() && slot <= range[1].toDecimalHour()) tr.selectSlot(div);
+      });
+      
       
       // handling the magic here.
       div.observe('mouseover',  function(event){ Event.element(event).setStyle({border: '1px dashed #333'}    )}.bindAsEventListener(tr));
@@ -169,3 +170,9 @@ Object.extend(Number.prototype, {
     return this > 9 ? this : this + '0';
   }
 });
+
+Object.extend(String.prototype, {
+  toDecimalHour: function(){
+    return parseFloat(this.split(':').collect(function(v) { return parseFloat(v) }).join('.'))
+  }
+})
