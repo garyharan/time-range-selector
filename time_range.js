@@ -48,13 +48,13 @@ var TimeRange = Class.create({
       div.time = slot; // eases pain down the road
       
       // handling the magic here.
-      div.observe('mouseover', function(event){ Event.element(event).setStyle({border: '1px dashed #333'})  }.bindAsEventListener(tr));
-      div.observe('mouseout', function(event){  Event.element(event).setStyle({border: '1px solid #dfdfdf'})}.bindAsEventListener(tr));
+      div.observe('mouseover',  function(event){ Event.element(event).setStyle({border: '1px dashed #333'}    )}.bindAsEventListener(tr));
+      div.observe('mouseout',   function(event){ Event.element(event).setStyle({border: '1px solid #dfdfdf'}  )}.bindAsEventListener(tr));
       
       div.observe('mousedown', function(event) {
         tr.updateStartElement(Event.element(event));
         tr.updateSelection(Event.element(event));
-        tr.active = true;
+        tr.active = true; // determines wether or not we update selected ones.
         Event.stop(event);
       }.bindAsEventListener(tr));
       
@@ -75,20 +75,70 @@ var TimeRange = Class.create({
     
     if (this.options.hideField){ this.field.hide(); }
   },
-  updateSelection: function(element){
+  updateSelection: function(slot){
     if (!this.active) return;
     
-    this.toggleTimeSlots.each(function(slot){
-      if(slot.time >= Math.min(element.time, this.startElement.time) && slot.time <= Math.max(element.time, this.startElement.time)){
-        slot.setStyle({background: '#FF8'})
-      }else{
-        slot.setStyle({background: '#dfdfdf'})
-      }
-    }.bind(this));
+    if (this.startElement.selected){
+      this.selectSlot(slot);
+    } else {
+      this.deselectSlot(slot);
+    }
+    
+    this.calculateTimeRange();
   },
-  updateStartElement: function(element){
-    this.startElement = element;
-    element.setStyle({background: '#FF8'})
+  updateStartElement: function(slot){
+    this.toggleSlot(slot);
+    this.startElement = slot;
+  },
+  toggleSlot: function(slot){
+    if (slot.selected){
+      this.deselectSlot(slot);
+    }else{
+      this.selectSlot(slot);
+    }
+  },
+  selectSlot: function(slot) {
+    slot.setStyle({background: '#FF8'});
+    slot.selected = true;
+  },
+  deselectSlot: function(slot){
+    slot.setStyle({background: '#DFDFDF'});
+    slot.selected = false;
+  },
+  calculateTimeRange: function(){
+    var difference = this.options.interval / 60;
+    var times      = this.toggleTimeSlots.select(function(slot){ 
+      return slot.selected
+    }).map(function(slot) {
+      return parseFloat(slot.time) // these are all valid times
+    });
+    
+    // determine which item finish a set
+    times = times.collect(function(time, index){
+      if (time == times.last()) return [time, true];
+      return [time, (Math.abs(time - times[index+1]) != difference)]
+    });
+    
+    var starter = null;
+    var ranges  = [];
+    
+    for (var i=0; i < times.length; i++) {
+      var time    = times[i][0];
+      var breaker = times[i][1];
+      
+      if (starter == null){
+        starter = time;
+      }
+      
+      if (breaker){
+        ranges.push([starter, time + difference])
+        starter = null
+      }
+    }
+    
+    this.field.value = ranges.collect(function(range) {
+      return range.collect(function(t){ return t.toHour() }).join('-');
+    }).join(' ')
   }
 });
 
@@ -97,7 +147,6 @@ $(document).observe('dom:loaded', function(event){
     new TimeRange(field);
   });
 })
-
 
 Object.extend(Number.prototype, {
   toHour: function() {
