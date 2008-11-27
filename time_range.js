@@ -1,3 +1,7 @@
+// TODO - afficher les ranges selectionne dans le field
+// TODO - appliquer l'heure du field dans le widget
+// TODO - deplacer le style dans des classes CSS separe
+
 var TimeRange = Class.create({
   initialize: function(field, options){
     this.field = field;
@@ -6,7 +10,9 @@ var TimeRange = Class.create({
       startTime: 8,
       endTime: 19,
       interval: 30,
-      hideField: false
+      hideField: false,
+      selectedBackgroundColor: '#FF8',
+      deselectedBackgroundColor: '#f3f3f3'
     }, options);
     
     var tr = this;
@@ -39,7 +45,7 @@ var TimeRange = Class.create({
         height: '30px',
         fontSize: '9px',
         lineHeight: '30px',
-        background: '#f3f3f3',
+        background: tr.options.deselectedBackgroundColor,
         cursor: 'crosshair'
       }).update(slot % 1 ? '' : Number(slot).toHour());
       div.setAttribute('title', Number(slot).toHour());
@@ -98,11 +104,11 @@ var TimeRange = Class.create({
     }
   },
   selectSlot: function(slot) {
-    slot.setStyle({background: '#FF8'});
+    slot.setStyle({background: this.options.selectedBackgroundColor});
     slot.selected = true;
   },
   deselectSlot: function(slot){
-    slot.setStyle({background: '#DFDFDF'});
+    slot.setStyle({background: this.options.deselectedBackgroundColor});
     slot.selected = false;
   },
   calculateTimeRange: function(){
