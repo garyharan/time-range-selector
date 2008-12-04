@@ -12,6 +12,8 @@ var TimeRange = Class.create({
     
     var tr = this;
     
+    this.selectors = [];
+    
     this.container = Builder.node('div');
     document.body.appendChild(this.container);
     this.container.setStyle({position: 'absolute', height: '30px'})
@@ -148,7 +150,36 @@ var TimeRange = Class.create({
   },
   updateCloseBoxes: function(event){
     this.calculateTimeRange();
-//    console.info(this.ranges);
+    this.ranges.each(function(range) {
+      var divs = this.toggleTimeSlots.reject(function(slot) {
+        return slot.time < range.first() || slot.time >= range.last()
+      });
+      
+      var selector = this.selectors.find(function(selector) { return selector.startTime == range.first() && selector.endTime == range.last() });
+      
+      if (selector == null){
+        selector = Builder.node('div').setStyle({
+          position: 'absolute',
+          backgroundColor: '#88F',
+          width: this.toggleTimeSlots.first().offsetWidth * (Math.abs(range.last() - range.first())) * (60/this.options.interval) + 'px'
+        });
+        selector.startTime = range.first();
+        selector.endTime   = range.last();
+        this.selectors.push(selector);
+      }
+      selector.show();
+      document.body.appendChild(selector)
+      Element.clonePosition(selector, divs.first(), {setWidth: false});
+      
+      selector.observe('dblclick', function(event) {
+        divs.each(function(div){
+          this.deselectSlot(div);
+          div.show();
+        }.bind(this))
+        selector.hide();
+      }.bindAsEventListener(this))
+      
+    }.bind(this));
   }
 });
 
@@ -163,7 +194,7 @@ Object.extend(Number.prototype, {
     if (this > 24 || this < 0){ throw "Unrecognized Hour Exception" }
     var h = Math.floor(this);
     var m = parseFloat((this % 1) / 100 * 6000).toString();
-    return h + ":" + (m.length == 2 ? m : m + 0);
+    return (h.toString().length == 2 ? h : '0' + h) + ":" + (m.length == 2 ? m : m + 0);
   },
   toDecimalMinutes: function(){
     return this / 6000 * 100
