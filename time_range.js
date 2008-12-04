@@ -82,6 +82,7 @@ var TimeRange = Class.create({
     }.bindAsEventListener(tr));
     
     if (this.options.hideField){ this.field.hide(); }
+    this.updateCloseBoxes();
   },
   updateSelection: function(slot){
     if (!this.active) return;
@@ -161,13 +162,20 @@ var TimeRange = Class.create({
         selector = Builder.node('div').setStyle({
           position: 'absolute',
           backgroundColor: '#88F',
-          width: this.toggleTimeSlots.first().offsetWidth * (Math.abs(range.last() - range.first())) * (60/this.options.interval) + 'px'
+          width: this.toggleTimeSlots.first().offsetWidth * (Math.abs(range.last() - range.first())) * (60/this.options.interval) + 'px',
+          cursor: 'pointer',
+          fontSize: '10px',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          lineHeight: '30px'
         });
         selector.startTime = range.first();
         selector.endTime   = range.last();
         this.selectors.push(selector);
       }
+      selector.setAttribute('title', 'Double click to remove.')
       selector.show();
+      selector.update(range.collect(function(t){ return t.toHour() }).join('-'))
       document.body.appendChild(selector)
       Element.clonePosition(selector, divs.first(), {setWidth: false});
       
@@ -177,6 +185,7 @@ var TimeRange = Class.create({
           div.show();
         }.bind(this))
         selector.hide();
+        this.calculateTimeRange();
       }.bindAsEventListener(this))
       
     }.bind(this));
