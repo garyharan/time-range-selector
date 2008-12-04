@@ -63,10 +63,6 @@ var TimeRange = Class.create({
         Event.stop(event);
       }.bindAsEventListener(tr));
       
-      $(document).observe('mouseup', function(event) {
-        tr.active = false;
-      }.bindAsEventListener(tr));
-      
       div.observe('mousemove', function(event) {
         if(tr.active == true){
           tr.updateSelection(Event.element(event));
@@ -77,6 +73,11 @@ var TimeRange = Class.create({
     }).each(function(slot) {
       tr.container.appendChild(slot)
     });
+    
+    $(document).observe('mouseup', function(event) {
+      tr.active = false;
+      tr.updateCloseBoxes(event);
+    }.bindAsEventListener(tr));
     
     if (this.options.hideField){ this.field.hide(); }
   },
@@ -140,15 +141,19 @@ var TimeRange = Class.create({
         starter = null
       }
     }
-    
+    this.ranges = ranges;
     this.field.value = ranges.collect(function(range) {
       return range.collect(function(t){ return t.toHour() }).join('-');
     }).join(' ')
+  },
+  updateCloseBoxes: function(event){
+    this.calculateTimeRange();
+//    console.info(this.ranges);
   }
 });
 
 $(document).observe('dom:loaded', function(event){
-  $$('.time_range').each(function(field){
+  [$$('.time_range').first()].each(function(field){
     new TimeRange(field);
   });
 })
