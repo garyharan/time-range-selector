@@ -2,13 +2,12 @@ var TimeRange = Class.create({
   initialize: function(field, options){
     this.field = field;
     this.options = Object.extend({
-      squareSelectorSize: 15, 
-      startTime: 8,
-      endTime: 19,
-      interval: 30,
-      hideField: false,
-      selectedBackgroundColor: '#FF8',
-      deselectedBackgroundColor: '#f3f3f3'
+      startTime: 8,                         // hour of start
+      endTime: 19,                          // hour of finish
+      interval: 30,                         // 30 == half hour, 15 == quarter hour
+      hideField: false,                     // hides field (might be a bit buggy)
+      selectedBackgroundColor: '#FF8',      // selected color
+      deselectedBackgroundColor: '#f3f3f3'  // deselected color
     }, options);
     
     var tr = this;
@@ -52,7 +51,6 @@ var TimeRange = Class.create({
       var selected_ranges = $F(tr.field).split(' ').collect(function(range){ return range.split('-') }).each(function(range){
         if (slot >= range[0].toDecimalHour() && slot <= range[1].toDecimalHour()) tr.selectSlot(div);
       });
-      
       
       // handling the magic here.
       div.observe('mouseover',  function(event){ Event.element(event).setStyle({border: '1px dashed #333'}    )}.bindAsEventListener(tr));
