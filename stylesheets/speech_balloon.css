@@ -1,0 +1,46 @@
+/* Elements */
+div.speech_balloon { overflow: hidden; }
+div.speech_balloon div.balloon { }
+div.speech_balloon div.balloon>div.top,
+div.speech_balloon div.balloon>div.bottom { height: 1px; margin: 0 1px; }
+div.speech_balloon div.balloon>blockquote { padding: 1em; margin: 0; }
+div.speech_balloon div.tail {}
+div.speech_balloon div.owner {}
+
+/* Layout */
+div.speech_balloon.above_owner div.tail,
+div.speech_balloon.underneath_owner div.tail { width: 9px; height: 5px; margin-left: 0.5em; background-repeat: no-repeat; }
+div.speech_balloon.right_of_owner div.tail,
+div.speech_balloon.left_of_owner div.tail { width: 5px; height: 9px; margin-top: 0.333em; background-repeat: no-repeat; }
+div.speech_balloon.above_owner div.tail { background-image: url('../images/speech_balloon/tail_mask_sb_above_owner.gif'); background-position: center bottom; }
+div.speech_balloon.underneath_owner div.tail { background-image: url('../images/speech_balloon/tail_mask_sb_underneath_owner.gif'); background-position: center top; }
+div.speech_balloon.right_of_owner div.tail { background-image: url('../images/speech_balloon/tail_mask_sb_right_of_owner.gif'); background-position: left center; }
+div.speech_balloon.left_of_owner div.tail { background-image: url('../images/speech_balloon/tail_mask_sb_left_of_owner.gif'); background-position: right center; }
+div.speech_balloon.right_of_owner div.owner,
+div.speech_balloon.left_of_owner div.owner { float: left; }
+div.speech_balloon.right_of_owner div.tail,
+div.speech_balloon.left_of_owner div.tail { float: left; }
+div.speech_balloon.right_of_owner div.balloon,
+div.speech_balloon.left_of_owner div.balloon { float: left; }
+div.speech_balloon.right_of_owner div.tail { margin-left: 0.333em; }
+div.speech_balloon.left_of_owner div.tail { margin-right: 0.333em; }
+div.speech_balloon.center_owner div.owner { text-align: center; }
+div.speech_balloon.center_owner div.tail { margin: 0 auto; }
+
+/* Colours */
+div.speech_balloon.offwhite div.balloon>div.top,
+div.speech_balloon.offwhite div.balloon>div.bottom,
+div.speech_balloon.offwhite div.balloon>blockquote,
+div.speech_balloon.offwhite div.tail { background-color: #F0F0F0; color: #000000; }
+div.speech_balloon.lightgrey div.balloon>div.top,
+div.speech_balloon.lightgrey div.balloon>div.bottom,
+div.speech_balloon.lightgrey div.balloon>blockquote,
+div.speech_balloon.lightgrey div.tail { background-color: #C0C0C0; color: #000000; }
+div.speech_balloon.black div.balloon>div.top,
+div.speech_balloon.black div.balloon>div.bottom,
+div.speech_balloon.black div.balloon>blockquote,
+div.speech_balloon.black div.tail { background-color: #000000; color: #FFFFFF; }
+div.speech_balloon.grey div.balloon>div.top,
+div.speech_balloon.grey div.balloon>div.bottom,
+div.speech_balloon.grey div.balloon>blockquote,
+div.speech_balloon.grey div.tail { background-color: #808080; color: #FFFFFF; }

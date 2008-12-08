@@ -1,0 +1,185 @@
+/*
+forms.css - Contains styling rules for all form-related design fixtures.
+*/
+
+label { padding: 0; clear: left; line-height: 31px; margin: 3px; }
+label.description { margin: 0 0 0 3px; top: 0; font-weight: normal; font-size: 11px; color: #606060; display: block; line-height: normal; }
+label.required { padding: 0 25px 0 0; background: url('../images/tags/required.gif') no-repeat right center; }
+label.title { line-height: normal; display: block; }
+em.required { font-weight: bold; color: #FF0000; background: none; font-style: normal; line-height: normal; }
+form { overflow: hidden; }
+form p { clear: both; margin: 0; padding: 3px 0; overflow: hidden; }
+form p.no_top_padding { padding-top: 0; }
+form p.no_bottom_padding { padding-bottom: 0; }
+form p.instructions { border: none; margin: 0 0 0.571em 0; font-size: 14px; font-weight: bold; }
+form p ul li { margin: 0; padding: 0; list-style: none; border: none; }
+form p.footnote { text-align: right; }
+form .image_preview { float: none; display: block; clear: both; border: none; margin: 3px 3px 0 3px; padding: 3px; border: 1px solid #C0C0C0; }
+form a, form a:hover, form a:active { border: none; }
+a.editable, a.editable.underline_some * { text-decoration: none; }
+a.editable:hover, a.editable:active { background: #FFFFD0; }
+a.editable.underline_some span { margin: 0; color: #000000; }
+a.editable .icon { margin: 0 0 0 5px; }
+form.quick_search { float: right; margin: 0; }
+form.small { margin: 0; line-height: normal; font-size: 1em; }
+form span { overflow: hidden; }
+span.inline { display: block; float: left; }
+span.inline span { float: none; line-height: 31px; margin: 3px 5px; }
+span.inline label { clear: none; }
+span.lowercase { text-transform: lowercase; }
+a.negative { color: #C00000; text-decoration: underline; }
+a.negative:hover { text-decoration: none; }
+a.negative.underline_some { text-decoration: none; }
+a.negative.underline_some span { text-decoration: underline; }
+button.first,
+a.button.first,
+input.first,
+textarea.first,
+select.first,
+label.first { margin-left: 0; }
+button.last,
+a.button.last,
+input.last,
+textarea.last,
+select.last,
+label.last { margin-right: 0; }
+.image { margin: 3px; }
+form .max { width: 90%; }
+table.form { width: 1%; }
+table.form.wide { width: auto; }
+table.form.horizontal * { margin-left: 0; }
+table.form tr:hover { background: none; }
+table.form td { padding: 0 0 5px 0; border: none; vertical-align: top; }
+table.form td p { margin: 3px 3px 1em 3px; padding: 0; }
+table.form td.label { text-align: right; white-space: nowrap; padding-left: 0; padding-right: 0; }
+table.form td.first { padding-left: 0; }
+table.form td.first * { margin-left: 0; }
+table.form td.label label { margin-left: 0; }
+table.form td.unpad_top { padding-top: 0; }
+table.form td.unpad_bottom { padding-bottom: 0; }
+table.form tr.last button { margin-bottom: 0; }
+table.form tfoot td { padding-bottom: 0; background: none; text-align: left; }
+table tfoot button,
+table tfoot .button { margin: 0 5px 0 0; }
+table tfoot label { line-height: 25px; }
+table.form tfoot button,
+table.form tfoot .button { margin: 3px; }
+table.form tfoot button.first,
+table.form tfoot .button.first { margin-left: 0; }
+table.form tfoot label { line-height: 31px; }
+table.form a { white-space: nowrap; }
+table.form .unspace_right { margin-right: 0; }
+table.form .unspace_left { margin-left: 0; }
+.clear_line_height { line-height: normal; }
+.together { }
+.together * { margin-right: 0; }
+
+/* Extended Form */
+table.form tr.toggle_extended a { font-size: 14px; font-weight: bold; text-decoration: none; display: block; background: #F0F0F0; color: #000000; padding: 5px 10px; margin: 3px; }
+table.form tr.toggle_extended a span.toggle { display: block; float: right; width: 9px; height: 5px; background: url('../images/forms/extended_toggle.gif') no-repeat; margin: 8px 0 0 0; }
+table.form tr.toggle_extended a.toggle_on span.toggle { background-position: left top; }
+table.form tr.toggle_extended a.toggle_off span.toggle { background-position: left bottom; }
+table.form.retracted tr.extended { display: none; }
+table.form.extended tr.extended { display: table-row; }
+table.form.retracted tr.toggle_extended a.toggle_off { display: none; }
+table.form.extended tr.toggle_extended a.toggle_on { display: none; }
+
+/* Pull-Down Form */
+.form_pulldown { margin: 50px auto; border: 10px solid #F0F0F0; padding: 50px; width: 740px; position: relative; }
+.form_pulldown div.tab_content { margin: 0; }
+
+/* Slider */
+table.slider { margin: 0; }
+table.slider td { padding: 0; border: none; }
+table.slider td.left span,
+table.slider td.right span { display: block; padding: 0 3px; }
+table.slider * { color: #808080; font-size: 12px; line-height: 31px; }
+table.slider .track  { position: relative; left: 0px; top: 0px; height: 15px; background: #FFFFFF url('../images/forms/slider_bg.gif') repeat-x center center; padding: 5px; margin: 3px; }
+table.slider .handle { position: absolute; left: -1px; top: 3px; height: 15px; width: 5px; background:#f2682f url('../images/forms/bg_positive.gif'); border:1px solid #c35225; border-top:1px solid #f9bb90; border-left:1px solid #f9bb90; cursor: col-resize; z-index: 1001; }
+
+/* Autocomplete */
+.autocomplete { display: block; overflow: hidden;  border:1px solid #bbb; background:#FFFFFF; }
+.autocomplete ul, .autocomplete ul li { list-style: none; margin: 0; padding: 0; display: block; }
+.autocomplete ul li { padding: 5px; display: block; }
+.autocomplete ul li.selected { background: #F6F6F6; }
+
+/* Text fields */
+input               { margin: 3px; }
+input.text          { font-size: 12px; font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif; border:1px solid #C0C0C0; background: #FFFFFF url('../images/forms/input_focus_bg.gif') repeat-x left top; padding: 4px; }
+.small input.text   { font-size: 11px; padding: 3px; }
+input.text.label_inside { color: #C0C0C0; }
+
+
+/* Textareas */
+textarea,
+div.textarea        { margin: 3px; font-size:12px; font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif; border:1px solid #C0C0C0; background:#FFFFFF url('../images/forms/input_focus_bg.gif') repeat-x left top; padding:4px; }
+
+/* Select Fields */
+select              { margin: 3px; font-size:12px; font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif; }
+select              { border:1px solid #C0C0C0; background:#FFFFFF url('../images/forms/input_focus_bg.gif') repeat-x left top; padding:3px; }
+select option.bold  { font-weight: bold; }  
+select.select,
+select option.select { color: #C0C0C0; }
+select * { color: #000000; }
+
+/* Disabled Fields */
+input.disabled,
+textarea.disabled,
+select.disabled { background: #EEEEEE url('../images/forms/input_bg.gif') repeat-x left top; color: #808080; }
+
+/* File fields */
+input.file          { font-size:12px; }
+
+/* Image fields */
+input.icon          { margin: 0; padding: 0; vertical-align: top; }
+
+/* Radio Buttons and Checkboxes */
+input.checkbox,
+input.radio         { position: relative; top: 2px; margin-right: 0; }
+
+/* Lists of Checkboxes and Radio Buttons */
+form ul.check_radio { list-style: none; margin: 3px; padding: 0; }
+form ul.check_radio li { list-style: none; line-height: 20px; display: block; }
+form ul.check_radio li.new { padding-left: 23px; }
+form ul.check_radio li label.description { display: inline; }
+form .check_radio label { line-height: normal; }
+
+/* Button fields */
+input.button          { font-size: 12px; }
+input.button.inline   { vertical-align: top; margin-top: 5px; }
+
+/* Large Fields */
+tr.large *,
+td.large * { font-size: 14px; font-weight: bold; }
+tr.large input.button,
+td.large input.button,
+tr.large button,
+td.large button { padding: 4px 8px; }
+tr.large label,
+td.large label { line-height: 33px; }
+tr.large span,
+td.large span { line-height: 35px; }
+input.text.large { font-size: 14px; }
+select.large { font-size: 14px; }
+
+/* Notice */
+div.notice { border: 1px solid #7ABB1B; background: #E4F1D1 url('../images/icons/tick.png') no-repeat 10px 10px; padding: 10px 10px 10px 31px; margin: 0 0 1.5em; color: #000000; line-height: normal; font-size: 12px; }
+
+/* Error */
+div.error,
+div.errorExplanation { border: 1px solid #F93C1B; background: #FED8D1 url('../images/icons/exclamation.png') no-repeat 10px 10px; padding: 10px 10px 10px 31px; margin: 0 0 1.5em; color: #000000; line-height: normal; font-size: 12px; }
+div.errorExplanation h2 { display: none; }
+div.errorExplanation * { padding-top: 0; padding-bottom: 0; margin-bottom: 0; line-height: normal; }
+
+/* SOJ Miscallenous */
+form img.image_preview.header_background { height: 80px; }
+
+/* Progress Bar */
+div.progress { margin: 3px; }
+
+/* Error Field */
+form .fieldWithErrors { display: inline; }
+form .fieldWithErrors input,
+form .fieldWithErrors select,
+form .fieldWithErrors textarea { border: 1px solid #F93C1B; }
+

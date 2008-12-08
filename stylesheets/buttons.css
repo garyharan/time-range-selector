@@ -1,0 +1,187 @@
+/* -------------------------------------------------------------- 
+  
+   buttons.css
+   * Gives you some great CSS-only buttons.
+   
+   Created by Kevin Hale [particletree.com]
+   * particletree.com/features/rediscovering-the-button-element
+
+   See Readme.txt in this folder for instructions.
+
+-------------------------------------------------------------- */
+
+a.button, button {
+  display:block;
+  float:left;
+  margin: 3px;
+  padding:4px 8px 3px 8px;   /* Links */
+  font-size: 12px;
+  line-height:130%;
+  text-decoration:none;
+  cursor:pointer;
+  white-space: nowrap;
+  font-weight: bold;
+}
+button {
+  width:auto;
+  overflow:visible;
+  padding:3px 8px 2px 8px;   /* IE6 */
+}
+button[type] {
+  padding:3px 8px 3px 8px;   /* Firefox */
+  line-height:13px;           /* Safari */
+}
+*:first-child+html button[type] {
+  padding:5px 8px 5px 8px;   /* IE7 */
+}
+button img, a.button img{
+  margin:0 3px -3px 0 !important;
+  padding:0;
+  border:none;
+  width:16px;
+  height:16px;
+  float:none;
+  bottom: 1px;
+}
+a.button.right, button.right { float: right; }
+a.button.no_float, button.no_float { float: none; display: inline; }
+.button.icon { padding-right: 0; padding-left: 3px; }
+
+/* Large Buttons */
+
+a.button.large, button.large { padding: 4px 12px; font-size: 14px; } /* Mostly for Links */
+button.large { padding: 2px 10px; } /* IE6 */
+button[type].large { padding: 4px 12px; line-height: 19px; } /* Firefox & Safari */
+*:first-child+html button[type].large { padding: 2px 10px; } /* IE7 */
+
+/* Huge Buttons */
+a.button.huge { padding: 0; border: none; background: none; }
+a.button.huge>.top,
+a.button.huge>.bottom { height: 1px; margin: 0 1px; background-image: url('/images/buttons/huge_positive_bg.gif'); background-repeat: repeat-x; }
+a.button.huge>.top { background-position: left top; }
+a.button.huge>.bottom { background-position: left bottom; }
+a.button.huge>.text { padding: 15px 20px; font-size: 20px; font-weight: bold; background: #F1662E url('/images/buttons/huge_positive_bg.gif') repeat-x left top; color: #FFFFFF; }
+a.button.huge:hover,
+a.button.huge:active { border: none; }
+a.button.huge.neutral>.top,
+a.button.huge.neutral>.bottom { background-image: url('/images/buttons/huge_neutral_bg.gif'); }
+a.button.huge.neutral>.text { background: #b7b7b7 url('/images/buttons/huge_neutral_bg.gif') repeat-x left top; color: #404040; }
+
+/* Button colors
+-------------------------------------------------------------- */
+
+/* Positive */
+button.positive, button.submit, a.button.positive {
+  color:#FFFFFF;
+  background:#f2682f url('/images/forms/bg_positive.gif') repeat-x left top;
+  border:1px solid #c35225;
+  border-top:1px solid #f9bb90;
+  border-left:1px solid #f9bb90;
+}
+button.positive:hover, button.submit:hover, a.button.positive:hover{
+  background-position: left -30px;
+  border:1px solid #c77432;
+  border-top:1px solid #fbcf9c;
+  border-left:1px solid #fbcf9c;
+  color: #FFFFFF;
+  background: #f6913f url('/images/forms/bg_positive.gif') repeat-x left center;
+}
+a.button.positive:active {
+  background-position: left -60px;
+  border:1px solid #f9bb90;
+  border-top:1px solid #c35225;
+  border-left:1px solid #c35225;
+  color: #FFFFFF;
+  background: #f4863d url('/images/forms/bg_positive.gif') repeat-x left bottom;
+}
+
+/* Neutral */
+button, a.button {
+  color:#404040;
+  background:#b8b8b8 url('/images/forms/bg.gif') repeat-x left top;
+  border:1px solid #949494;
+  border-top:1px solid #e0e0e0;
+  border-left:1px solid #e0e0e0;
+}
+button:hover, a.button:hover{
+  border:1px solid #a7a7a7;
+  border-top:1px solid #eaeaea;
+  border-left:1px solid #eaeaea;
+  color: #404040;
+  background:#cfcfcf url('/images/forms/bg.gif') repeat-x left center;
+}
+a.buttons:active{
+  border:1px solid #e0e0e0;
+  border-top:1px solid #949494;
+  border-left:1px solid #949494;
+  color: #404040;;
+  background:#c8c8c8 url('/images/forms/bg.gif') repeat-x left bottom;
+}
+
+/* Disabled */
+button.disabled, a.button.disabled {
+  color: #808080; font-weight: normal; background:#b8b8b8 url('/images/forms/bg.gif') repeat-x left top;
+  border:1px solid #949494;
+  border-top:1px solid #e0e0e0;
+  border-left:1px solid #e0e0e0;
+}
+button.disabled:hover, a.button.disabled:hover{
+  color: #808080; background:#cfcfcf url('/images/forms/bg.gif') repeat-x left center;
+  border:1px solid #a7a7a7;
+  border-top:1px solid #eaeaea;
+  border-left:1px solid #eaeaea;
+}
+a.buttons.disabled:active{
+  color: #808080; background:#c8c8c8 url('/images/forms/bg.gif') repeat-x left bottom;
+  border:1px solid #e0e0e0;
+  border-top:1px solid #949494;
+  border-left:1px solid #949494;
+}
+
+/* Negative */
+button.negative, a.button.negative {
+  color:#FFFFFF;
+  background:#ff5b5b url('/images/forms/bg_negative.gif');
+  border:1px solid #ce4949;
+  border-top:1px solid #ffb2b2;
+  border-left:1px solid #ffb2b2;
+  font-weight: bold;
+}
+button.negative:hover, a.button.negative:hover{
+  border:1px solid #ce6464;
+  border-top:1px solid #ffc7c7;
+  border-left:1px solid #ffc7c7;
+  color: #FFFFFF;
+  background:#ff8c8c;
+}
+a.button.negative:active{
+  border:1px solid #ffb1b1;
+  border-top:1px solid #ce4848;
+  border-left:1px solid #ce4848;
+  color: #FFFFFF;
+  background:#ff7777;
+}
+
+/* Accept */
+button.accept, a.button.accept {
+  color:#FFFFFF;
+  background:#6ab117 url('/images/forms/bg_accept.gif');
+  border:1px solid #558e13;
+  border-top:1px solid #bddd7e;
+  border-left:1px solid #bddd7e;
+  font-weight: bold;
+}
+button.accept:hover, a.button.accept:hover{
+  border:1px solid #78a419;
+  border-top:1px solid #d1e984;
+  border-left:1px solid #d1e984;
+  color: #FFFFFF;
+  background:#96cb1f;
+}
+a.button.accept:active{
+  border:1px solid #bddd7e;
+  border-top:1px solid #558e13;
+  border-left:1px solid #558e13;
+  color: #FFFFFF;
+  background:#8ac31f;
+}

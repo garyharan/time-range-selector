@@ -1,0 +1,402 @@
+/****************/
+/* CSS Scaffold */
+/****************/
+
+/* CSS Reset */
+html,body,div,span,object,iframe,
+h1,h2,h3,h4,h5,h6,p,blockquote,pre,
+a,abbr,acronym,address,code,
+del,dfn,em,img,q,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+body{line-height:1.5;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th,td{text-align:left;font-weight:normal;}
+table,td,th{vertical-align:middle;}
+blockquote:before,blockquote:after,q:before,q:after{content:"";}
+blockquote,q{quotes:"" "";}
+a img{border:none;}
+
+/* Clearfix */
+.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0;}
+.clearfix{display:inline-block;}
+html[xmlns] .clearfix{display:block;}
+* html .clearfix{height:1%;}
+
+/* Typography */
+body{font-size:75%;color:#222;background:#fff;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-weight:normal;color:#111;}
+h1{font-size:3em;line-height:1;margin-bottom:0.5em;}
+h2{font-size:2em;margin-bottom:0.75em;}
+h3{font-size:1.5em;line-height:1;margin-bottom:1em;}
+h4{font-size:1.2em;line-height:1.25;margin-bottom:1.25em;height:1.25em;}
+h5{font-size:1em;font-weight:bold;margin-bottom:1.5em;}
+h6{font-size:1em;font-weight:bold;}
+h1 img,h2 img,h3 img,
+h4 img,h5 img,h6 img{margin:0;}
+p{margin:0 0 1.5em;}
+a:focus,
+a:hover{color:#000;}
+a{color:#009;text-decoration:underline;outline:none;}
+blockquote{margin:1.5em;color:#666;font-style:italic;}
+strong{font-weight:bold;}
+em,dfn{font-style:italic;}
+dfn{font-weight:bold;}
+sup,sub{line-height:0;}
+abbr,
+acronym{border-bottom:1px dotted #666;}
+address{margin:0 0 1.5em;font-style:italic;}
+del{color:#666;}
+pre,code{margin:1.5em 0;white-space:pre;}
+pre,code,tt{font:1em 'andale mono','lucida console',monospace;line-height:1.5;}
+li ul,
+li ol{margin:0 1.62em;}
+ul,ol{margin:0 1.62em 1.62em 1.62em;}
+ul{list-style-type:disc;}
+ol{list-style-type:decimal;}
+dl{margin:0 0 1.5em 0;}
+dl dt{font-weight:bold;}
+dd{margin-left:1.5em;}
+table{margin-bottom:1.4em;width:100%;}
+th{font-weight:bold;background:#C3D9FF;}
+th,td{padding:4px 10px 4px 5px;}
+tr.even td{background:#E5ECF9;}
+caption{background:#eee;}
+.hide{display:none;}
+.quiet{color:#666;font-weight:normal;}
+.loud{color:#000;}
+.added{background:#060;color:#fff;}
+.removed{background:#900;color:#fff;}
+.last{margin-right:0;padding-right:0;}
+.top{margin-top:0;padding-top:0;}
+.bottom{margin-bottom:0;padding-bottom:0;}
+
+/* Tables */
+table th { background: #EFEFEF; border-bottom: 1px solid #C0C0C0; padding: 5px 5px 4px; white-space: nowrap; }
+table th small { font-size: 10px; font-weight: normal; display: block; color: #404040; }
+table td small { display: block; font-weight: normal; color: #666; font-size: 11px; }
+table td { border-bottom: 1px solid #E0E0E0; padding: 5px 5px 4px; vertical-align: top; }
+table td.item { font-weight: bold; width: auto; }
+table td.actions { white-space: nowrap; font-size: 11px; }
+table td.actions a { position: relative; bottom: -2px; margin: 0 5px 0 0; padding: 1px 0 1px 19px; background-repeat: no-repeat; }
+table td.actions a.new           { background-image: url('../images/icons/actions.png'); background-position: 0 0; }
+table td.actions a.edit          { background-image: url('../images/icons/actions.png'); background-position: 0 -16px; }
+table td.actions a.delete        { background-image: url('../images/icons/actions.png'); background-position: 0 -32px; color: #F93C1B; }
+table td.actions a.show          { background-image: url('../images/icons/actions.png'); background-position: 0 -48px; }
+table td.actions a.copy          { background-image: url('../images/icons/actions.png'); background-position: 0 -64px; }
+table td.actions a.make_inactive { background-image: url('../images/icons/actions.png'); background-position: 0 -80px; color: #F93C1B; }
+table td.actions a.make_active   { background-image: url('../images/icons/actions.png'); background-position: 0 -96px; color: #7ABB1B; }
+table td.actions a.star          { background-image: url('../images/icons/actions.png'); background-position: 0 -112px; }
+table td.actions a.email         { background-image: url('../images/icons/actions.png'); background-position: 0 -128px; }
+table td.actions a.archive       { background-image: url('../images/icons/folder.png'); background-position: left top; }
+table td.actions a.misc          { padding-left: 0; }
+table td.actions a.last { margin: 0; }
+table td.align_center { text-align: center; }
+table tfoot td { background: #F7F7F7; text-align: right; font-style: normal; }
+table tr.first td { padding-top: 0; }
+table tr.meta td { background: #F7F7F7; border-bottom: none; padding-bottom: 5px; text-align: right; }
+table tr.meta td span.pagination { float: left; }
+table tr .last { padding-right: 0; }
+table tr .nowrap { white-space: nowrap; }
+table tr .align_center { text-align: center; }
+table tr .align_right { text-align: right; }
+table tr.header td * { margin: 15px 0 5px; padding: 0; }
+table tr.header.first td * { margin-top: 0; }
+table tr:hover { background: #FFFFD0; }
+table.no_hover tr:hover { background: none; }
+table tr.highlight,
+table th.highlight,
+table td.highlight { background: #DFF2F8; }
+table tr.options { background: none; }
+table tr.options td { padding-top: 0; }
+table tr.actions td { padding-bottom: 0; }
+table tr.actions td button,
+table tr.actions td .button { margin-left: 0; }
+
+/* CSS Framework Overwrite */
+body { margin: 0; padding: 20px; font-family: "Lucida Grande",verdana,arial,helvetica,sans-serif; }
+h1 { font-size: 20px; font-weight: bold; margin: 0 0 20px 0; padding: 0; }
+h2 { font-size: 16px; font-weight: bold; margin: 0 0 20px 0; padding: 0; border-bottom: 1px solid #E0E0E0; }
+h3 { font-size: 14px; font-weight: bold; margin: 0 0 20px 0; padding: 0 0 5px 0; border-bottom: 1px solid #C0C0C0; color: #000000; }
+
+/* General */
+a:link,
+a:visited { color: #0000C0; text-decoration: underline; }
+a:hover,
+a:active { color: #0000C0; text-decoration: none; }
+a.underline_some { text-decoration: none; }
+a.underline_some span { text-decoration: underline; }
+img.icon { position: relative; bottom: -3px; width: 16px; height: 16px; float: none; z-index: 1; }
+
+/* Header */
+#header { background: #404040; overflow: hidden; position: relative; }
+#header * { line-height: 1; }
+#header #utilities { float: right; color: #808080; margin: 20px; }
+#header #utilities a { color: #FFFFFF; }
+#header h1 { font-size: 2em; margin: 20px; }
+#header h1 a { color: #FFFFFF; text-decoration: none; }
+#header ul#nav { overflow: hidden; margin: 0 20px; position: relative; }
+#header ul#nav li { display: block; float: left; margin: 0 5px 0 0; padding: 0; list-style: none; }
+#header ul#nav li a { display: block; padding: 5px 10px; text-decoration: none; color: #404040; background: #C0C0C0; font-size: 14px; }
+#header ul#nav li.active a { background: #FFFFFF; color: #000000; }
+#header ul#nav li a:hover { background: #E0E0E0; }
+#header ul#nav li.active a:hover { background: #FFFFFF; color: #000000; }
+#header #presence_ui { position: absolute; right: 20px; bottom: 0; }
+#header #quick_availability { padding: 5px; background: #808080; float: right; margin: 0 0 0 5px; }
+#header #quick_availability a { text-decoration: none; position: relative; }
+#header #quick_availability a b { color: #FFFFFF; font-size: 8px; background: #808080; padding: 1px; display: block; position: absolute; top: -7px; left: 12px; line-height: 1; }
+#header #quick_notification { padding: 5px; background: #C00000; float: right; }
+#header #quick_notification a { text-decoration: none; position: relative; }
+#header #quick_notification a b { color: #FFFFFF; font-size: 8px; background: #C00000; padding: 1px; display: block; position: absolute; top: -7px; left: 12px; line-height: 1; }
+
+/* Layout */
+#content { position: relative; }
+.column_left { float: left; width: 50%; }
+.column_right { float: right; width: 50%; }
+
+/* Quick Notification Options */
+#notification_options { position: absolute; top: 0; right: 0; border: 5px solid #C00000; margin: -5px 20px 0 0; }
+#notification_options div.content { background: #FFFFFF; }
+#notification_options div.content ul { margin: 0; padding: 0; }
+#notification_options div.content ul li { position: relative; background: #FFFFFF; list-style: none; margin: 0; border-bottom: 1px solid #C00000; padding: 3px 5px; }
+#notification_options div.content ul li a { font-size: 11px; display: block; }
+#notification_options div.content ul li small { color: #808080; font-size: 9px; display: block; }
+#notification_options div.content ul li span.when { float: right; margin: 0 0 0 10px; color: #808080; font-size: 9px; }
+#notification_options div.content ul li.doctor { padding-left: 26px; }
+#notification_options div.content ul li.doctor a.avatar { position: absolute; top: 2px; left: 5px; }
+#notification_options div.content ul li.doctor a.avatar img { width: 16px; height: 16px; display: block; float: left; }
+
+#notification_options div.header { line-height: 1; font-size: 11px; color: #FFFFFF; background: #C00000; padding: 4px 5px 0; }
+#notification_options div.header a.minimize { float: right; display: block; height: 100%; }
+#notification_options div.header a.minimize b { background: #E68080; width: 10px; display: block; height: 3px; margin: 4px 0; }
+
+/* Quick Availability Options */
+#availability_options { position: absolute; top: 0; right: 0; border: 5px solid #808080; margin: -5px 20px 0 0; }
+#availability_options div.content { padding: 5px 5px 5px 26px; }
+#availability_options.online div.content { background: #FFFFFF url('../images/icons/lightbulb.png') no-repeat 5px 5px; }
+#availability_options.offline div.content { background: #FFFFFF url('../images/icons/lightbulb_off.png') no-repeat 5px 5px; }
+#availability_options div.content p { margin: 0; padding: 0; font-size: 11px; }
+#availability_options div.header { line-height: 1; font-size: 11px; color: #FFFFFF; background: #808080; padding: 4px 5px 0; }
+#availability_options div.header a.minimize { float: right; display: block; height: 100%; }
+#availability_options div.header a.minimize b { background: #C0C0C0; width: 10px; display: block; height: 3px; margin: 4px 0; }
+
+/* Tabs */
+ul.tabs { margin: 0; padding: 5px 5px 0 5px; background: #F0F0F0 url('../images/tabs/bg.gif') repeat-x left bottom; overflow: hidden; }
+ul.tabs, ul.tabs li { list-style: none; }
+ul.tabs li { margin: 0 5px 0 0; float: left; display: block; }
+ul.tabs li a { display: block; padding: 5px 10px; text-decoration: none; line-height: 1; color: #808080; background: #F7F7F7; border: 1px solid #C0C0C0; }
+ul.tabs li a:hover, ul.tabs li a:active { background: #FFFFFF; }
+ul.tabs li a.active { color: #000000; background: #FFFFFF; border-bottom: 1px solid #FFFFFF; font-weight: bold; }
+.tab_content { padding: 20px; background: #FFFFFF; border: 1px solid #C0C0C0; border-top: none; margin: 0 0 1.5em; }
+.tab_content table { margin: 0; }
+
+/* Photo */
+div.photo { width: 80px; float: left; margin: 0 15px 0 0; }
+div.photo a.photo,
+div.photo span.photo { display: block; padding: 2px; border: 1px solid #C0C0C0; }
+form div.photo span.photo { margin: 3px; }
+div.photo a.photo img,
+div.photo span.photo img { width: 100%; }
+div.photo a.edit,
+div.photo a.delete { display: block; margin: 3px; text-align: center; font-size: 12px; }
+
+/* Education */
+dl.education * { font-size: 12px; }
+dl.education dd { margin-left: 0; padding-left: 0; font-size: 11px; }
+dl.education dd.years { color: #808080; margin: 0 0 0.81em; }
+
+/* Experience */
+dl.experience * { font-size: 12px; }
+dl.experience dd { margin-left: 0; padding-left: 0; font-size: 11px; }
+dl.experience dd.years { color: #808080; margin: 0 0 0.81em; }
+
+/* Groups and Associations */
+dl.groups_associations * { font-size: 12px; }
+dl.groups_associations dd { color: #808080; margin: 0 0 0.81em; padding-left: 0; font-size: 11px; }
+
+/* Honors and Awards */
+dl.honors_awards * { font-size: 12px; }
+dl.honors_awards dd { color: #808080; margin: 0 0 0.81em; padding-left: 0; font-size: 11px; }
+
+/* Blocks */
+div.block a.more { float: right; }
+div.block { padding: 10px; background: #F0F0F0; }
+div.column_left div.block { margin: 0 10px 20px 0; }
+div.column_right div.block { margin: 0 0 20px 10px; }
+div.block div.content { overflow: hidden; margin: 10px 0 0 0; padding: 10px; background: #FFFFFF; }
+div.block h2 { margin: 0; padding: 0; border: none; line-height: 1; }
+
+/* Doctor Consultations */
+#search { margin: 0 0 1.62em; }
+#search * { margin: 0 3px 0 0; }
+#search label { line-height: 25px; }
+
+#doctor_consultations_controller #folders { width: 110px; float: left; }
+#doctor_consultations_controller ul.folders { margin: 0; padding: 0; }
+#doctor_consultations_controller ul.folders li { list-style: none; padding: 5px 10px; margin: 0; }
+#doctor_consultations_controller ul.folders li.active { background: #F0F0F0; }
+#doctor_consultations_controller ul.folders li.header { font-weight: bold; }
+#doctor_consultations_controller #consultations { border: 10px solid #F0F0F0; margin: 0 0 0 110px; }
+#doctor_consultations_controller #consultations table { margin: 0; }
+#doctor_consultations_controller #consultations thead th { font-weight: normal; border: none; padding: 0 0 5px; }
+#doctor_consultations_controller #consultations tfoot td { border: none; padding: 4px 0 0; background: #F0F0F0; }
+#doctor_consultations_controller #consultations tbody td { border-color: #F0F0F0; } 
+#doctor_consultations_controller #consultations tbody tr { background: #F7F7F7; }
+#doctor_consultations_controller #consultations tbody tr td.item { padding-left: 26px; background-image: url('../images/icons/email.png'); background-position: 5px 5px; background-repeat: no-repeat; }
+#doctor_consultations_controller #consultations tbody tr.unread { background: #FFFFFF; }
+#doctor_consultations_controller #consultations tbody tr.live { background: #F0FFF0; }
+#doctor_consultations_controller #consultations tbody tr.live.unread { background: #E0FFE0; }
+#doctor_consultations_controller #consultations tbody tr.replied td.item { background-image: url('../images/icons/email_go.png'); }
+#doctor_consultations_controller #consultations tbody tr.live td.item { background-image: url('../images/icons/comments.png'); }
+#doctor_consultations_controller #consultations div.show { line-height: 25px; }
+#doctor_consultations_controller #consultation { border: 10px solid #F0F0F0; padding: 0; }
+#doctor_consultations_controller div.header { overflow: hidden; padding: 0 0 5px; background: #F0F0F0; }
+#doctor_consultations_controller div.header div.patient { float: left; }
+#doctor_consultations_controller div.header div.patient h2 { margin: 0; color: #808080; font-weight: normal; border: none; padding: 0; font-size: 1.5em; }
+#doctor_consultations_controller div.header div.patient h2 strong { color: #000000; }
+#doctor_consultations_controller div.header div.patient span.vitals { display: block; background: #0000C0; color: #FFFFFF; padding: 2px 5px; }
+#doctor_consultations_controller div.session_status { position: relative; float: right; background: #808080; padding: 5px 5px 5px 10px; color: #FFFFFF; overflow: hidden; }
+#doctor_consultations_controller div.session_status * { line-height: 1; font-size: 12px; float: left; margin-right: 5px; line-height: 22px; }
+#doctor_consultations_controller div.session_status span.status { font-weight: bold; }
+#doctor_consultations_controller div.session_status a.button { padding: 3px 10px; margin: 0 0 0 5px; line-height: normal; }
+#doctor_consultations_controller div.session_status span.more { display: block; font-size: 11px; float: none; text-align: right; }
+#doctor_consultations_controller div.session_status span.more a { color: #FFFFFF; float: none; margin: 0; }
+#doctor_consultations_controller div.tab_content { margin: 0; overflow: hidden; }
+#doctor_consultations_controller div.sidebar { float: left; width: 270px; ;}
+#doctor_consultations_controller #video_chat { overflow: hidden; margin: 0 0 20px; }
+#doctor_consultations_controller #video_chat img.placeholder { border: 1px solid #C0C0C0; width: 268px; }
+#doctor_consultations_controller #video_chat a.button { font-size: 12px; margin: 5px 5px 0 0; }
+#doctor_consultations_controller #diagnosis { border: 1px solid #C0C0C0; background: #F0F0F0; padding: 5px 5px 4px; margin: 0 0 10px; }
+#doctor_consultations_controller #diagnosis h4 { font-weight: bold; font-size: 12px; margin: 0 0 5px; }
+#doctor_consultations_controller #diagnosis a.edit { float: right; }
+#doctor_consultations_controller #diagnosis dl { margin: 0; padding: 5px; background: #FFFFFF; }
+#doctor_consultations_controller #diagnosis dd { margin: 0 0 0 10px; }
+#doctor_consultations_controller #files { border: 1px solid #C0C0C0; background: #F0F0F0; padding: 5px 5px 4px; }
+#doctor_consultations_controller #files table { background: #FFFFFF; }
+#doctor_consultations_controller #files th { padding-top: 0; border: none; }
+#doctor_consultations_controller #files th a.all { float: right; font-weight: normal; }
+#doctor_consultations_controller #files th form { margin: 5px 0 0; }
+#doctor_consultations_controller #files th input { display: block; margin: 0 0 5px; }
+#doctor_consultations_controller #files td { border-bottom-color: #F0F0F0; line-height: 21px; }
+#doctor_consultations_controller #files td.date { color: #808080; font-size: 10px; white-space: nowrap; }
+#doctor_consultations_controller #files td img.icon { top: 3px; }
+#doctor_consultations_controller #chat { margin: 0 0 0 290px; }
+#doctor_consultations_controller #chat span.date { color: #808080; font-weight: normal; float: right; font-size: 10px; }
+#doctor_consultations_controller #chat_window { padding: 10px; border: 1px solid #C0C0C0; margin: 0 0 10px; background: url('../images/chat_window_bg.gif') repeat-x left top; }
+#doctor_consultations_controller #chat div.speech_balloon { margin: 0 0 10px; }
+#doctor_consultations_controller #chat div.speech_balloon div.owner { font-weight: bold; line-height: 1; margin: 0 0 3px; }
+#doctor_consultations_controller #chat div.speech_balloon div.owner span.label { font-weight: normal; }
+#doctor_consultations_controller #chat div.speech_balloon div.balloon>blockquote { padding: 4px 10px; }
+#doctor_consultations_controller #chat div.speech_balloon.doctor div.balloon>div.top,
+#doctor_consultations_controller #chat div.speech_balloon.doctor div.balloon>div.bottom,
+#doctor_consultations_controller #chat div.speech_balloon.doctor div.balloon>blockquote,
+#doctor_consultations_controller #chat div.speech_balloon.doctor div.tail { background-color: #E0E0FF; color: #000000; }
+#doctor_consultations_controller #chat div.speech_balloon.patient div.balloon>div.top,
+#doctor_consultations_controller #chat div.speech_balloon.patient div.balloon>div.bottom,
+#doctor_consultations_controller #chat div.speech_balloon.patient div.balloon>blockquote,
+#doctor_consultations_controller #chat div.speech_balloon.patient div.tail { background-color: #FFFFC0; color: #000000; }
+#doctor_consultations_controller #chat div.chat_form { overflow: hidden; }
+#doctor_consultations_controller #chat div.chat_form span.inline * { margin: 0 10px 0 0; }
+#doctor_consultations_controller #chat div.chat_form a.upload_file { display: block; margin: 10px 0 0; line-height: 1; }
+#doctor_consultations_controller #chat div.file { margin: 0 0 10px; overflow: hidden; }
+#doctor_consultations_controller #chat div.file>div.top,
+#doctor_consultations_controller #chat div.file>div.bottom { height: 1px; margin: 0 1px; }
+#doctor_consultations_controller #chat div.file>div.content { padding: 4px 10px; }
+#doctor_consultations_controller #chat div.file.doctor>div.top,
+#doctor_consultations_controller #chat div.file.doctor>div.bottom,
+#doctor_consultations_controller #chat div.file.doctor>div.content { background-color: #E0E0FF; color: #000000; }
+#doctor_consultations_controller #chat div.file.patient>div.top,
+#doctor_consultations_controller #chat div.file.patient>div.bottom,
+#doctor_consultations_controller #chat div.file.patient>div.content { background-color: #F0F0F0; color: #000000; }
+#doctor_consultations_controller #chat div.file span.owner { font-weight: bold; }
+#doctor_consultations_controller #chat div.file div.preview { margin: 5px 0; }
+#doctor_consultations_controller #chat div.file div.preview img { width: 240px; }
+
+/* Profile */
+div.profile h2 { border: none; margin: 0; }
+div.profile h3 { border: none; padding: 0; margin: 0 0 1.62em; }
+div.profile hr { margin: 2.43em 0; }
+div.profile p.title { font-size: 12px; margin: 0; }
+div.profile p.location { font-size: 12px; color: #808080; }
+div.profile #general { margin: 0 0 0 95px; }
+div.profile dl.summary { padding: 10px; background: #F0F0F0; }
+div.profile dl.summary dt { float: left; display: block; width: 110px; margin: 0; font-weight: bold; }
+div.profile dl.summary dd { margin: 0 0 0 120px; }
+
+/* Doctor Availabilities */
+#doctor_availabilities_controller div.actions { float: right; }
+#doctor_availabilities_controller div.actions a.button { margin: 0; }
+#doctor_availabilities_controller #days { clear: both; overflow: hidden; background: #F0F0F0; margin: 0 0 0 40px; border: 1px solid #C0C0C0; border-bottom: none; }
+#doctor_availabilities_controller #days div.column { float: left; width: 14.286%; }
+#doctor_availabilities_controller #days div.column b { line-height: 1; display: block; text-align: center; padding: 10px; border-right: 1px solid #E0E0E0; }
+#doctor_availabilities_controller #days div.column.last b { border: none;  }
+#doctor_availabilities_controller #hours { background: #F0F0F0; float: left; width: 39px; border: 1px solid #C0C0C0; border-right: 1px solid #E0E0E0; }
+#doctor_availabilities_controller #hours div.hour { text-align: right; font-size: 10px; height: 39px; border-bottom: 1px solid #E0E0E0; }
+#doctor_availabilities_controller #hours div.hour.last { border-bottom: none; }
+#doctor_availabilities_controller #hours div.hour b { padding: 5px; line-height: 1; display: block; font-weight: normal; }
+#doctor_availabilities_controller #week { overflow: hidden; border-top: 1px solid #E0E0E0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; }
+#doctor_availabilities_controller #week div.column { float: left; width: 14.286%; }
+#doctor_availabilities_controller #week div.column div.container { border-right: 1px solid #E0E0E0; }
+#doctor_availabilities_controller #week div.column.last div.container { border: none;  }
+#doctor_availabilities_controller #week div.hour { height: 39px; border-bottom: 1px solid #E0E0E0; position: relative; }
+#doctor_availabilities_controller #week div.hour.last { border-bottom: none; }
+#doctor_availabilities_controller #week div.hour div.half { background: #F0F0F0; height: 1px; position: relative; top: 19px; position: relative; z-index: 1px; }
+#doctor_availabilities_controller #week div.availability { position: absolute; left: 0; width: 100%; z-index: 20; }
+#doctor_availabilities_controller #week div.availability b { height: 100%; font-weight: normal; background: #808080; display: block; line-height: 1; color: #FFFFFF; padding: 5px; margin: 1px 5px; }
+#doctor_availabilities_controller #week div.availability b a { float: right; }
+
+/* Doctor Dashboard */
+#doctor_dashboard_controller #consultations ul { margin: 10px 0 0 0; padding: 0; background: #FFFFFF; }
+#doctor_dashboard_controller #consultations ul li { margin: 0; padding: 5px 10px 5px 31px; list-style: none; border-bottom: 1px solid #F0F0F0; background: #FFFFFF url('../images/icons/email.png') no-repeat 10px 8px; }
+#doctor_dashboard_controller #consultations ul li.live { background: #FFE0E0 url('../images/icons/comments.png') no-repeat 10px 8px; }
+#doctor_dashboard_controller #consultations ul li.live span.when,
+#doctor_dashboard_controller #consultations ul li.live small { color: #807070; }
+#doctor_dashboard_controller #consultations ul li span.when { float: right; color: #808080; font-size: 10px; }
+#doctor_dashboard_controller #consultations ul li a { font-weight: bold; }
+#doctor_dashboard_controller #consultations ul li small { font-size: 11px; color: #808080; display: block; }
+#doctor_dashboard_controller #report ul { margin-bottom: 0; }
+#doctor_dashboard_controller #links ul { margin-bottom: 0;  }
+#doctor_dashboard_controller #links ul li { margin: 0; }
+#doctor_dashboard_controller #get_started ol li { font-size: 16px; margin-left: 0.54em; }
+#doctor_dashboard_controller #get_started ol li small { font-size: 10px; color: #808080; display: block; }
+
+/* Consultation Review */
+#consultations_controller.review div.block div.content { padding: 20px; }
+#consultations_controller.review #consultation p,
+#consultations_controller.review #consultation dl { margin-left: 2em; }
+#consultations_controller.review #consultation div.quick_profile { margin: 0 0 1.6em; }
+#consultations_controller.review table.form { margin: 0; }
+#consultations_controller.review table.form td.label { padding-left: 2em; }
+#consultations_controller.review tr.header h3 { margin: 0.82em 0 0; padding: 0; border: none; color: #000000; }
+#consultations_controller.review tr.header small { margin: 5px 0 0; display: block; font-size: 10px; color: #808080; }
+#consultations_controller.review tr.header.first h3 { margin-top: 0; }
+
+/* Star Rating */
+ul.star_rating { margin: 0; padding: 0; overflow: hidden; margin: 3px; height: 22px; }
+ul.star_rating li { display: block; float: left; margin: 0 5px 0 0; padding: 0; list-style: none; line-height: 16px; height: 16px; }
+ul.star_rating li a { position: relative; bottom: -3px; display: block; height: 16px; width: 16px; background: url('../images/icons/star_rating.png') no-repeat left top; }
+ul.star_rating li a:hover,
+ul.star_rating li a.active { background-position: left bottom; }
+
+/* Quick Profile */
+div.quick_profile { display: block; overflow: hidden; }
+div.quick_profile div.photo { width: 50px; margin: 0; padding: 0; }
+div.quick_profile div.summary { margin: 0 0 0 60px; }
+div.quick_profile div.summary span.name { font-size: 14px; }
+div.quick_profile div.summary span.title { font-size: 12px; }
+div.quick_profile div.summary span.specialties { font-size: 10px; display: block; color: #808080; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

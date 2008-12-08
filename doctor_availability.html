@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Edit Doctor Availability</title>
+	<link href="stylesheets/scaffold.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="stylesheets/forms.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="stylesheets/buttons.css" rel="stylesheet" type="text/css" media="screen">
+	<link href="stylesheets/lightwindow.css" rel="stylesheet" type="text/css" media="screen">
+	<script src="javascripts/prototype.js" type="text/javascript"></script>	
+	<script src="javascripts/scriptaculous.js?load=effects" type="text/javascript"></script>	
+	<script src="javascripts/lightwindow.js" type="text/javascript"></script>	
+	<script src="javascripts/livepipe.js" type="text/javascript"></script>	
+	<script src="javascripts/tabs.js" type="text/javascript"></script>	
+</head>
+
+<body id="doctor_availabilities_controller">
+
+  <div class="actions">
+    <a href="doctor_add_availability.html" params="lightwindow_width=300,lightwindow_height=200" class="lightwindow button"><img src="images/icons/add.png"> Add Availability</a>
+  </div>
+  <h1>Edit Doctor Availability</h1>
+
+  <div id="days">
+    <div class="column"><b>Sunday</b></div>
+    <div class="column weekday"><b>Monday</b></div>
+    <div class="column weekday"><b>Tuesday</b></div>
+    <div class="column weekday"><b>Wednesday</b></div>
+    <div class="column weekday"><b>Thursday</b></div>
+    <div class="column weekday"><b>Friday</b></div>
+    <div class="column last"><b>Saturday</b></div>
+  </div>
+  <div id="hours">
+    <div class="hour"><b>8am</b></div>
+    <div class="hour"><b>9am</b></div>
+    <div class="hour"><b>10am</b></div>
+    <div class="hour"><b>11am</b></div>
+    <div class="hour"><b>12am</b></div>
+    <div class="hour"><b>1pm</b></div>
+    <div class="hour"><b>2pm</b></div>
+    <div class="hour"><b>3pm</b></div>
+    <div class="hour"><b>4pm</b></div>
+    <div class="hour"><b>5pm</b></div>
+    <div class="hour"><b>6pm</b></div>
+    <div class="hour"><b>7pm</b></div>
+    <div class="hour"><b>8pm</b></div>
+    <div class="hour last"><b>9pm</b></div>
+  </div> 
+  <div id="week">
+    <div class="column">
+      <div class="container">
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+    <div class="column weekday">
+      <div class="container">
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:0;height:147px"><b><a href=""><img src="images/icons/pencil.png"></a>9am - 12pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:20px;height:167px"><b><a href=""><img src="images/icons/pencil.png"></a>1:30pm - 6pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+    <div class="column weekday">
+      <div class="container">
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:0;height:147px"><b><a href=""><img src="images/icons/pencil.png"></a>9am - 12pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:20px;height:167px"><b><a href=""><img src="images/icons/pencil.png"></a>1:30pm - 6pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+    <div class="column weekday">
+      <div class="container">
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:0;height:147px"><b><a href=""><img src="images/icons/pencil.png"></a>9am - 12pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:20px;height:127px"><b><a href=""><img src="images/icons/pencil.png"></a>1:30pm - 5pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:20px;height:47px"><b><a href=""><img src="images/icons/pencil.png"></a>6:30pm - 8pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+    <div class="column weekday">
+      <div class="container">
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:0;height:147px"><b><a href=""><img src="images/icons/pencil.png"></a>9am - 12pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:20px;height:127px"><b><a href=""><img src="images/icons/pencil.png"></a>1:30pm - 5pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:20px;height:87px"><b><a href=""><img src="images/icons/pencil.png"></a>6:30pm - 9pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+    <div class="column weekday">
+      <div class="container">
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:0;height:127px"><b><a href=""><img src="images/icons/pencil.png"></a>9am - 11:30am</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour">
+          <div class="half"><!----></div>
+          <div class="availability" style="top:0;height:107px"><b><a href=""><img src="images/icons/pencil.png"></a>2:00pm - 4:00pm</b></div>
+        </div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+    <div class="column last">
+      <div class="container">
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour"><div class="half"><!----></div></div>
+        <div class="hour last"><div class="half"><!----></div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
