@@ -330,17 +330,16 @@ div.profile dl.summary dd { margin: 0 0 0 120px; }
 #doctor_availabilities_controller #days div.column { float: left; width: 14.286%; }
 #doctor_availabilities_controller #days div.column b { line-height: 1; display: block; text-align: center; padding: 10px; border-right: 1px solid #E0E0E0; }
 #doctor_availabilities_controller #days div.column.last b { border: none;  }
-#doctor_availabilities_controller #hours { background: #F0F0F0; float: left; width: 39px; border: 1px solid #C0C0C0; border-right: 1px solid #E0E0E0; }
-#doctor_availabilities_controller #hours div.hour { text-align: right; font-size: 10px; height: 39px; border-bottom: 1px solid #E0E0E0; }
+#doctor_availabilities_controller #hours { background: #F0F0F0; float: left; width: 40px; border: 1px solid #C0C0C0; border-right: 1px solid #E0E0E0; }
+#doctor_availabilities_controller #hours div.hour { text-align: right; font-size: 10px; height: 40px; border-bottom: 1px solid #E0E0E0; }
 #doctor_availabilities_controller #hours div.hour.last { border-bottom: none; }
 #doctor_availabilities_controller #hours div.hour b { padding: 5px; line-height: 1; display: block; font-weight: normal; }
 #doctor_availabilities_controller #week { overflow: hidden; border-top: 1px solid #E0E0E0; border-right: 1px solid #C0C0C0; border-bottom: 1px solid #C0C0C0; }
 #doctor_availabilities_controller #week div.column { float: left; width: 14.286%; }
 #doctor_availabilities_controller #week div.column div.container { border-right: 1px solid #E0E0E0; }
 #doctor_availabilities_controller #week div.column.last div.container { border: none;  }
-#doctor_availabilities_controller #week div.hour { height: 39px; border-bottom: 1px solid #E0E0E0; position: relative; }
+#doctor_availabilities_controller #week div.hour { height: 20px; border-bottom: 1px solid #E0E0E0; position: relative; }
 #doctor_availabilities_controller #week div.hour.last { border-bottom: none; }
-#doctor_availabilities_controller #week div.hour div.half { background: #F0F0F0; height: 1px; position: relative; top: 19px; position: relative; z-index: 1px; }
 #doctor_availabilities_controller #week div.availability { position: absolute; left: 0; width: 100%; z-index: 20; }
 #doctor_availabilities_controller #week div.availability b { height: 100%; font-weight: normal; background: #808080; display: block; line-height: 1; color: #FFFFFF; padding: 5px; margin: 1px 5px; }
 #doctor_availabilities_controller #week div.availability b a { float: right; }

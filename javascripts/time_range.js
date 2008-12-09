@@ -1,17 +1,71 @@
 var TimeRange = Class.create({
-  initialize: function(field, options){
-    this.field = field;
+  initialize: function(options){
     this.options = Object.extend({
-      startTime: 8,                         // hour of start
-      endTime: 19,                          // hour of finish
-      interval: 30,                         // 30 == half hour, 15 == quarter hour
-      hideField: false,                     // hides field (might be a bit buggy)
-      selectedBackgroundColor: '#FF8',      // selected color
-      deselectedBackgroundColor: '#f3f3f3'  // deselected color
+      selectedBackgroundColor:    '#808080',  // selected color
+      selectedBorderColor:        '#808080',  // selected color for bottom border
+      deselectedBackgroundColor:  '#FFFFFF',  // deselected color
+      deselectedBorderColor:      '#E0E0E0'   // deselected color for bottom border
     }, options);
     
     var tr = this;
     
+    this.days = $w('sunday monday tuesday wednesday thursday friday saturday').map(function(day) { return $$('.' + day + ' .hour') })
+    
+    this.days.each(function(hour){
+      hour.each(function(half){
+        half.observe('mousedown', function(event) {
+          tr.selectHour(this);
+        });
+        half.observe('mousemove', function(event) {
+          if (tr.active){
+            this.setStyle({background: tr.options.selectedBackgroundColor, borderBottom: '1px solid ' + tr.options.selectedBackgroundColor})
+            this.selected = true;
+          }
+        });
+      });
+    });
+    
+    $(document).observe('mouseup', function(event) { tr.active = false });
+  },
+  selectHour: function(hour){
+    this.active = true
+    hour.selected = true;
+    hour.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+  },
+  deselectHour: function(hour){
+    hour.selected = false;
+    hour.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+  }
+});
+
+$(document).observe('dom:loaded', function(event){
+  new TimeRange();
+})
+
+Object.extend(Number.prototype, {
+  toHour: function() {
+    if (this > 24 || this < 0){ throw "Unrecognized Hour Exception" }
+    var h = Math.floor(this);
+    var m = parseFloat((this % 1) / 100 * 6000).toString();
+    return (h.toString().length == 2 ? h : '0' + h) + ":" + (m.length == 2 ? m : m + 0);
+  },
+  toDecimalMinutes: function(){
+    return this / 6000 * 100
+  },
+  paddedMinutes: function() {
+    if (this > 60 || this < 0){ throw "Unrecognized Minute Exception" }
+    return this > 9 ? this : this + '0';
+  }
+});
+
+Object.extend(String.prototype, {
+  toDecimalHour: function(){
+    return parseFloat(this.split(':').collect(function(v) { return parseFloat(v) }).join('.'))
+  }
+})
+
+
+    /*
     this.selectors = [];
     
     this.container = Builder.node('div');
@@ -189,33 +243,4 @@ var TimeRange = Class.create({
       }.bindAsEventListener(this))
       
     }.bind(this));
-  }
-});
-
-$(document).observe('dom:loaded', function(event){
-  $$('.time_range').each(function(field){
-    new TimeRange(field);
-  });
-})
-
-Object.extend(Number.prototype, {
-  toHour: function() {
-    if (this > 24 || this < 0){ throw "Unrecognized Hour Exception" }
-    var h = Math.floor(this);
-    var m = parseFloat((this % 1) / 100 * 6000).toString();
-    return (h.toString().length == 2 ? h : '0' + h) + ":" + (m.length == 2 ? m : m + 0);
-  },
-  toDecimalMinutes: function(){
-    return this / 6000 * 100
-  },
-  paddedMinutes: function() {
-    if (this > 60 || this < 0){ throw "Unrecognized Minute Exception" }
-    return this > 9 ? this : this + '0';
-  }
-});
-
-Object.extend(String.prototype, {
-  toDecimalHour: function(){
-    return parseFloat(this.split(':').collect(function(v) { return parseFloat(v) }).join('.'))
-  }
-})
+  }*/
