@@ -15,6 +15,11 @@
 	<script src="javascripts/livepipe.js" type="text/javascript"></script>	
 	<script src="javascripts/tabs.js" type="text/javascript"></script>	
 	<script src="javascripts/time_range.js" type="text/javascript"></script>	
+	<script type="text/javascript" charset="utf-8">
+    $(document).observe('dom:loaded', function(event){
+      new TimeRange();
+    })
+	</script>
 </head>
 
 <body id="doctor_availabilities_controller">

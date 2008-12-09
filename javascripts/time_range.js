@@ -1,6 +1,7 @@
 var TimeRange = Class.create({
   initialize: function(options){
     this.options = Object.extend({
+      startTime: 8,
       selectedBackgroundColor:    '#808080',  // selected color
       selectedBorderColor:        '#808080',  // selected color for bottom border
       deselectedBackgroundColor:  '#FFFFFF',  // deselected color
@@ -11,10 +12,12 @@ var TimeRange = Class.create({
     
     this.days = $w('sunday monday tuesday wednesday thursday friday saturday').map(function(day) { return $$('.' + day + ' .hour') })
     
-    this.days.each(function(hour){
-      hour.each(function(half){
+    this.days.each(function(slot, index){
+      slot.time = (index * 0.5) + tr.options.startTime;
+      
+      slot.each(function(half){
         half.observe('mousedown', function(event) {
-          tr.selectHour(this);
+          tr.selectSlot(this);
         });
         half.observe('mousemove', function(event) {
           if (tr.active){
@@ -25,21 +28,53 @@ var TimeRange = Class.create({
       });
     });
     
-    $(document).observe('mouseup', function(event) { tr.active = false });
+    $(document).observe('mouseup', function(event) { 
+      tr.active = false;
+      tr.displayTimes(event);
+    });
   },
-  selectHour: function(hour){
+  selectSlot: function(slot){
     this.active = true
-    hour.selected = true;
-    hour.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+    slot.selected = true;
+    slot.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
   },
-  deselectHour: function(hour){
-    hour.selected = false;
-    hour.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+  deselectSlot: function(slot){
+    slot.selected = false;
+    slot.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+  },
+  deselectBlock: function(event){
+    
+  },
+  displayTimes: function(event){
+    // select each day...
+    var day_sets = [];
+    var time_set = [];
+    var starter  = null;
+    
+    for (var i=0; i < this.days.length; i++) {
+      var day = this.days[i];
+      day: for (var j=0; j < day.length; j++) {
+        var slot = day[j];
+        if (slot.selected){
+          if (starter == null) starter = slot;
+          time_set.push(slot.time)
+          while(slot.next().selected) continue day;
+          time_set.push([starter, day[j]]);
+          starter = null;
+        }
+      };
+      day_sets.push(time_set)
+    };
+    console.info(day_sets);
   }
 });
 
-$(document).observe('dom:loaded', function(event){
-  new TimeRange();
+Element.extend({
+  getLastSelectedSibblings: function(element){
+    if (element.next().selected){
+      return element.next()
+    } else { return element }
+  }
 })
 
 Object.extend(Number.prototype, {
@@ -65,182 +100,4 @@ Object.extend(String.prototype, {
 })
 
 
-    /*
-    this.selectors = [];
-    
-    this.container = Builder.node('div');
-    document.body.appendChild(this.container);
-    this.container.setStyle({position: 'absolute', height: '30px'})
-      .clonePosition(this.field, {
-        setWidth: false, 
-        setHeight: false, 
-        offsetTop: -4, 
-        offsetLeft: this.field.offsetWidth + 10
-      });
-    
-    this.toggleTimes = $R(this.options.startTime, this.options.endTime).collect(function(hour){
-      return $R(0, Math.floor(60 / tr.options.interval)-1).collect(function(minute){
-        return hour + '.' + (Number(minute * tr.options.interval) / 60 * 100)
-      }.bind(hour));
-    })
-    .flatten()
-    .reject(function(time){ return time >= tr.options.endTime })
-    
-    this.toggleTimeSlots = this.toggleTimes.collect(function(slot) {
-      var div = Builder.node('div').setStyle({
-        border: '1px solid #dfdfdf',
-        float: 'left',
-        margin: 'auto',
-        textAlign: 'center',
-        width: '21px',
-        height: '30px',
-        fontSize: '9px',
-        lineHeight: '30px',
-        background: tr.options.deselectedBackgroundColor,
-        cursor: 'crosshair'
-      }).update(slot % 1 ? '' : Number(slot).toHour());
-      div.setAttribute('title', Number(slot).toHour());
-      div.addClassName('slot');
-      
-      div.time = slot; // eases pain down the road
-      
-      var selected_ranges = $F(tr.field).split(' ').collect(function(range){ return range.split('-') }).each(function(range){
-        if (slot >= range[0].toDecimalHour() && slot <= range[1].toDecimalHour()) tr.selectSlot(div);
-      });
-      
-      // handling the magic here.
-      div.observe('mouseover',  function(event){ Event.element(event).setStyle({border: '1px dashed #333'}    )}.bindAsEventListener(tr));
-      div.observe('mouseout',   function(event){ Event.element(event).setStyle({border: '1px solid #dfdfdf'}  )}.bindAsEventListener(tr));
-      
-      div.observe('mousedown', function(event) {
-        tr.updateStartElement(Event.element(event));
-        tr.updateSelection(Event.element(event));
-        tr.active = true; // determines wether or not we update selected ones.
-        Event.stop(event);
-      }.bindAsEventListener(tr));
-      
-      div.observe('mousemove', function(event) {
-        if(tr.active == true){
-          tr.updateSelection(Event.element(event));
-        }
-      }.bindAsEventListener(tr))
-      
-      return div;
-    }).each(function(slot) {
-      tr.container.appendChild(slot)
-    });
-    
-    $(document).observe('mouseup', function(event) {
-      tr.active = false;
-      tr.updateCloseBoxes(event);
-    }.bindAsEventListener(tr));
-    
-    if (this.options.hideField){ this.field.hide(); }
-    this.updateCloseBoxes();
-  },
-  updateSelection: function(slot){
-    if (!this.active) return;
-    
-    if (this.startElement.selected){
-      this.selectSlot(slot);
-    } else {
-      this.deselectSlot(slot);
-    }
-    
-    this.calculateTimeRange();
-  },
-  updateStartElement: function(slot){
-    this.toggleSlot(slot);
-    this.startElement = slot;
-  },
-  toggleSlot: function(slot){
-    if (slot.selected){
-      this.deselectSlot(slot);
-    }else{
-      this.selectSlot(slot);
-    }
-  },
-  selectSlot: function(slot) {
-    slot.setStyle({background: this.options.selectedBackgroundColor});
-    slot.selected = true;
-  },
-  deselectSlot: function(slot){
-    slot.setStyle({background: this.options.deselectedBackgroundColor});
-    slot.selected = false;
-  },
-  calculateTimeRange: function(){
-    var difference = this.options.interval / 60;
-    var times      = this.toggleTimeSlots.select(function(slot){ 
-      return slot.selected
-    }).map(function(slot) {
-      return parseFloat(slot.time) // these are all valid times
-    });
-    
-    // determine which item finish a set
-    times = times.collect(function(time, index){
-      if (time == times.last()) return [time, true];
-      return [time, (Math.abs(time - times[index+1]) != difference)]
-    });
-    
-    var starter = null;
-    var ranges  = [];
-    
-    for (var i=0; i < times.length; i++) {
-      var time    = times[i][0];
-      var breaker = times[i][1];
-      
-      if (starter == null){
-        starter = time;
-      }
-      
-      if (breaker){
-        ranges.push([starter, time + difference])
-        starter = null
-      }
-    }
-    this.ranges = ranges;
-    this.field.value = ranges.collect(function(range) {
-      return range.collect(function(t){ return t.toHour() }).join('-');
-    }).join(' ')
-  },
-  updateCloseBoxes: function(event){
-    this.calculateTimeRange();
-    this.ranges.each(function(range) {
-      var divs = this.toggleTimeSlots.reject(function(slot) {
-        return slot.time < range.first() || slot.time >= range.last()
-      });
-      
-      var selector = this.selectors.find(function(selector) { return selector.startTime == range.first() && selector.endTime == range.last() });
-      
-      if (selector == null){
-        selector = Builder.node('div').setStyle({
-          position: 'absolute',
-          backgroundColor: '#88F',
-          width: this.toggleTimeSlots.first().offsetWidth * (Math.abs(range.last() - range.first())) * (60/this.options.interval) + 'px',
-          cursor: 'pointer',
-          fontSize: '10px',
-          fontWeight: 'bold',
-          textAlign: 'center',
-          lineHeight: '30px'
-        });
-        selector.startTime = range.first();
-        selector.endTime   = range.last();
-        this.selectors.push(selector);
-      }
-      selector.setAttribute('title', 'Double click to remove.')
-      selector.show();
-      selector.update(range.collect(function(t){ return t.toHour() }).join('-'))
-      document.body.appendChild(selector)
-      Element.clonePosition(selector, divs.first(), {setWidth: false});
-      
-      selector.observe('dblclick', function(event) {
-        divs.each(function(div){
-          this.deselectSlot(div);
-          div.show();
-        }.bind(this))
-        selector.hide();
-        this.calculateTimeRange();
-      }.bindAsEventListener(this))
-      
-    }.bind(this));
-  }*/
+
