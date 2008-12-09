@@ -67,7 +67,6 @@ var TimeRange = Class.create({
       };
       day_sets.push(time_set.first())
     };
-    console.info(day_sets);
   }
 });
 
