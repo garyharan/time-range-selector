@@ -59,7 +59,7 @@ var TimeRange = Class.create({
           if (starter == null){
             starter = slot;
           }
-          while(slot.next().selected){ console.info('going forward'); continue d }
+          while(slot.next().selected){ continue d }
           time_set.push([starter, day[j]]);
           starter.update(starter.time + "-" + day[j].time)
           starter = null;
