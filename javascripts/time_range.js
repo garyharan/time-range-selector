@@ -53,6 +53,7 @@ var TimeRange = Class.create({
     
     for (var i=0; i < this.days.length; i++) {
       var day = this.days[i];
+      day.invoke('update','');
       d: for (var j=0; j < day.length; j++) {
         var slot = day[j];
         if (slot.selected){
