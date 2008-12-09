@@ -10,12 +10,12 @@ var TimeRange = Class.create({
     
     var tr = this;
     
-    this.days = $w('sunday monday tuesday wednesday thursday friday saturday').map(function(day) { return $$('.' + day + ' .hour') })
+/*    this.days = $w('sunday monday tuesday wednesday thursday friday saturday').map(function(day) { return $$('.' + day + ' .hour') })*/
+    this.days = $w('sunday monday').map(function(day) { return $$('.' + day + ' .hour') })
     
-    this.days.each(function(slot, index){
-      slot.time = (index * 0.5) + tr.options.startTime;
-      
-      slot.each(function(half){
+    this.days.each(function(slot){
+      slot.each(function(half, index){
+        half.time = ((index+1) * 0.5) + tr.options.startTime;
         half.observe('mousedown', function(event) {
           tr.selectSlot(this);
         });
@@ -53,27 +53,32 @@ var TimeRange = Class.create({
     
     for (var i=0; i < this.days.length; i++) {
       var day = this.days[i];
-      day: for (var j=0; j < day.length; j++) {
+      d: for (var j=0; j < day.length; j++) {
         var slot = day[j];
         if (slot.selected){
-          if (starter == null) starter = slot;
-          time_set.push(slot.time)
-          while(slot.next().selected) continue day;
+          if (starter == null){
+            starter = slot;
+          }
+          while(slot.next().selected){ console.info('going forward'); continue d }
           time_set.push([starter, day[j]]);
+          starter.update(starter.time + "-" + day[j].time)
           starter = null;
         }
       };
-      day_sets.push(time_set)
+      day_sets.push(time_set.first())
     };
     console.info(day_sets);
   }
 });
 
-Element.extend({
-  getLastSelectedSibblings: function(element){
+Element.addMethods({
+  getLastSelectedSibbling: function(element){
+    var element = element;
     if (element.next().selected){
       return element.next()
-    } else { return element }
+    } else { 
+      return element 
+    }
   }
 })
 
