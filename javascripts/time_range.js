@@ -101,7 +101,6 @@ var TimeRange = Class.create({
   selectSlotsFromFields: function(){
     this.dayNames.each(function(dayName){
       $F(dayName).split(' ').collect(function(t){ return t.split('-') }).each(function(range) {
-        /*console.info(dayName + " " + range.first() + " " + range.last());*/
         $$('.' + dayName + ' .hour').each(function(slot) {
           if (slot.time >= range.first().toDecimalHour() && slot.time < range.last().toDecimalHour()){
             this.selectSlot(slot);
