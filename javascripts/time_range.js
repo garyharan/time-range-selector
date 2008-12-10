@@ -11,11 +11,11 @@ var TimeRange = Class.create({
     
     var tr = this;
     
-/*    this.days = $w('sunday monday tuesday wednesday thursday friday saturday').map(function(day) { return $$('.' + day + ' .hour') })*/
-    this.days = $w('sunday monday').map(function(day) { return $$('.' + day + ' .hour') })
+    this.dayNames = $w('sunday monday tuesday wednesday thursday friday saturday');
+    this.days = this.dayNames.map(function(day) { return $$('.' + day + ' .hour') })
     
-    this.days.each(function(slot){
-      slot.each(function(half, index){
+    this.days.each(function(lapse){
+      lapse.each(function(half, index){
         half.time = ((index) * 0.5) + tr.options.startTime;
         half.tr = tr;
         half.observe('mousedown', function(event) {
@@ -91,6 +91,15 @@ var TimeRange = Class.create({
       };
       day_sets.push(time_set.first())
     };
+    
+    // input into fields
+    this.dayNames.each(function(dayName) {
+      $(dayName).value = $$('div.' + dayName + ' .hour').reject(function(s){ 
+        return s.innerHTML == ''
+      }).map(function(s){ 
+        return s.innerHTML.replace(/<.*>/, '') 
+      }).join(' ');
+    })
   }
 });
 

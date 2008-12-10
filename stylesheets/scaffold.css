@@ -338,7 +338,7 @@ div.profile dl.summary dd { margin: 0 0 0 120px; }
 #doctor_availabilities_controller #week div.column { float: left; width: 14.286%; }
 #doctor_availabilities_controller #week div.column div.container { border-right: 1px solid #E0E0E0; }
 #doctor_availabilities_controller #week div.column.last div.container { border: none;  }
-#doctor_availabilities_controller #week div.hour { height: 20px; border-bottom: 1px solid #E0E0E0; position: relative; }
+#doctor_availabilities_controller #week div.hour { height: 19px; border-bottom: 1px solid #E0E0E0; position: relative; }
 #doctor_availabilities_controller #week div.hour.last { border-bottom: none; }
 #doctor_availabilities_controller #week div.availability { position: absolute; left: 0; width: 100%; z-index: 20; }
 #doctor_availabilities_controller #week div.availability b { height: 100%; font-weight: normal; background: #808080; display: block; line-height: 1; color: #FFFFFF; padding: 5px; margin: 1px 5px; }
