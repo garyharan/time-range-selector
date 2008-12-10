@@ -16,7 +16,7 @@ var TimeRange = Class.create({
     
     this.days.each(function(slot){
       slot.each(function(half, index){
-        half.time = ((index+1) * 0.5) + tr.options.startTime;
+        half.time = ((index) * 0.5) + tr.options.startTime;
         half.tr = tr;
         half.observe('mousedown', function(event) {
           tr.selectSlot(this);
@@ -73,9 +73,11 @@ var TimeRange = Class.create({
           if (starter == null){
             starter = slot;
           }
-          while(slot.next().selected){ continue d }
+          if (slot.next()) {
+            while(slot.next().selected){ continue d }
+          }
           time_set.push([starter, day[j]]);
-          starter.update(starter.time.toHour() + "-" + day[j].time.toHour())
+          starter.update(starter.time.toHour() + "-" + Math.max(day[j].time + 0.5, starter.time + 0.5).toHour())
           starter.setStyle({
             fontWeight: 'bold', 
             color: this.options.fontColor,
