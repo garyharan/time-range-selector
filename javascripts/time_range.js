@@ -5,7 +5,8 @@ var TimeRange = Class.create({
       selectedBackgroundColor:    '#808080',  // selected color
       selectedBorderColor:        '#808080',  // selected color for bottom border
       deselectedBackgroundColor:  '#FFFFFF',  // deselected color
-      deselectedBorderColor:      '#E0E0E0'   // deselected color for bottom border
+      deselectedBorderColor:      '#E0E0E0',  // deselected color for bottom border
+      fontColor:                  '#FFFFFF'   // font color
     }, options);
     
     var tr = this;
@@ -16,6 +17,7 @@ var TimeRange = Class.create({
     this.days.each(function(slot){
       slot.each(function(half, index){
         half.time = ((index+1) * 0.5) + tr.options.startTime;
+        half.tr = tr;
         half.observe('mousedown', function(event) {
           tr.selectSlot(this);
         });
@@ -36,14 +38,25 @@ var TimeRange = Class.create({
   selectSlot: function(slot){
     this.active = true
     slot.selected = true;
-    slot.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+    slot.setStyle({background: this.options.selectedBackgroundColor,   borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
   },
   deselectSlot: function(slot){
     slot.selected = false;
-    slot.setStyle({background: this.options.selectedBackgroundColor, borderBottom: '1px solid ' + this.options.selectedBackgroundColor});
+    slot.setStyle({background: this.options.deselectedBackgroundColor, borderBottom: '1px solid ' + this.options.deselectedBorderColor});
   },
-  deselectBlock: function(event){
-    
+  deselectLapse: function(event, slot){
+    var slot = event.findElement().up('div');
+    var lapses = $(slot).nextSiblings();
+    this.deselectSlot(slot);
+    for (var i=0; i < lapses.length; i++) {
+      if (lapses[i].selected){
+        this.deselectSlot(lapses[i])
+      }else{
+        break;
+      }
+    };
+    this.displayTimes();
+    event.stop()
   },
   displayTimes: function(event){
     // select each day...
@@ -62,7 +75,15 @@ var TimeRange = Class.create({
           }
           while(slot.next().selected){ continue d }
           time_set.push([starter, day[j]]);
-          starter.update(starter.time + "-" + day[j].time)
+          starter.update(starter.time.toHour() + "-" + day[j].time.toHour())
+          starter.setStyle({
+            fontWeight: 'bold', 
+            color: this.options.fontColor,
+            padding: '2px'
+          });
+          var closeLapse = Builder.node('img', {src: 'images/icons/delete.png', height: '16px', width: '16px'}).setStyle({position: 'relative', top: '-16px', cssFloat: 'right'});
+          closeLapse.observe('mousedown', this.deselectLapse.bindAsEventListener(this, slot));
+          starter.appendChild(closeLapse);
           starter = null;
         }
       };

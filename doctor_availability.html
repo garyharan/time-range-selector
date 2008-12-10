@@ -14,6 +14,7 @@
 	<script src="javascripts/lightwindow.js" type="text/javascript"></script>	
 	<script src="javascripts/livepipe.js" type="text/javascript"></script>	
 	<script src="javascripts/tabs.js" type="text/javascript"></script>	
+	<script src="javascripts/builder.js" type="text/javascript"></script>	
 	<script src="javascripts/time_range.js" type="text/javascript"></script>	
 	<script type="text/javascript" charset="utf-8">
     $(document).observe('dom:loaded', function(event){
@@ -30,13 +31,13 @@
   <h1>Edit Doctor Availability</h1>
 
   <div id="days">
-    <div class="column weekday"><b>Sunday</b></div>
-    <div class="column weekday"><b>Monday</b></div>
-    <div class="column weekday"><b>Tuesday</b></div>
-    <div class="column weekday"><b>Wednesday</b></div>
-    <div class="column weekday"><b>Thursday</b></div>
-    <div class="column weekday"><b>Friday</b></div>
-    <div class="column weekday last"><b>Saturday</b></div>
+    <div class="column weekday">      <input type="text" id="sunday">     <b>Sunday</b></div>
+    <div class="column weekday">      <input type="text" id="monday">     <b>Monday</b></div>
+    <div class="column weekday">      <input type="text" id="tuesday">    <b>Tuesday</b></div>
+    <div class="column weekday">      <input type="text" id="wednesday">  <b>Wednesday</b></div>
+    <div class="column weekday">      <input type="text" id="thursday">   <b>Thursday</b></div>
+    <div class="column weekday">      <input type="text" id="friday">     <b>Friday</b></div>
+    <div class="column weekday last"> <input type="text" id="saturday">   <b>Saturday</b></div>
   </div>
   <div id="hours">
     <div class="hour"><b>8am</b></div>
