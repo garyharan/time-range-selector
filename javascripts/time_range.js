@@ -62,9 +62,6 @@ var TimeRange = Class.create({
     event.stop()
   },
   displayTimes: function(event){
-    // select each day...
-    var day_sets = [];
-    var time_set = [];
     var starter  = null;
     
     for (var i=0; i < this.days.length; i++) {
@@ -79,7 +76,6 @@ var TimeRange = Class.create({
           if (slot.next()) {
             while(slot.next().selected){ continue d }
           }
-          time_set.push([starter, day[j]]);
           starter.update(starter.time.toHour() + "-" + Math.max(day[j].time + 0.5, starter.time + 0.5).toHour())
           starter.setStyle({
             fontWeight: 'bold', 
@@ -92,7 +88,6 @@ var TimeRange = Class.create({
           starter = null;
         }
       };
-      day_sets.push(time_set.first())
     };
     
     // input into fields
