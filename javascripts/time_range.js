@@ -31,6 +31,8 @@ var TimeRange = Class.create({
       });
     });
     
+    this.selectSlotsFromFields();
+    
     $(document).observe('mouseup', function(event) { 
       tr.active = false;
       tr.displayTimes(event);
@@ -94,6 +96,23 @@ var TimeRange = Class.create({
     };
     
     // input into fields
+    this.populateFieldsFromSlots(event);
+  },
+  selectSlotsFromFields: function(){
+    this.dayNames.each(function(dayName){
+      $F(dayName).split(' ').collect(function(t){ return t.split('-') }).each(function(range) {
+        /*console.info(dayName + " " + range.first() + " " + range.last());*/
+        $$('.' + dayName + ' .hour').each(function(slot) {
+          if (slot.time >= range.first().toDecimalHour() && slot.time < range.last().toDecimalHour()){
+            this.selectSlot(slot);
+          }
+        }.bind(this))
+      }.bind(this));
+    }.bind(this));
+    this.active = false;
+    this.displayTimes();
+  },
+  populateFieldsFromSlots: function(){
     this.dayNames.each(function(dayName) {
       $(dayName).value = $$('div.' + dayName + ' .hour').reject(function(s){
         return s.innerHTML == ''
