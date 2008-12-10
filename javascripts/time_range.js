@@ -20,6 +20,7 @@ var TimeRange = Class.create({
         half.tr = tr;
         half.observe('mousedown', function(event) {
           tr.selectSlot(this);
+          event.stop()
         });
         half.observe('mousemove', function(event) {
           if (tr.active){
@@ -83,7 +84,7 @@ var TimeRange = Class.create({
             color: this.options.fontColor,
             padding: '2px'
           });
-          var closeLapse = Builder.node('img', {src: 'images/icons/delete.png', height: '16px', width: '16px'}).setStyle({position: 'relative', top: '-16px', cssFloat: 'right'});
+          var closeLapse = Builder.node('img', {src: 'images/icons/delete.png', height: '16px', width: '16px'}).setStyle({position: 'relative', top: (Prototype.Browser.WebKit ? '0px' : '-16px'), cssFloat: 'right'});
           closeLapse.observe('mousedown', this.deselectLapse.bindAsEventListener(this, slot));
           starter.appendChild(closeLapse);
           starter = null;
