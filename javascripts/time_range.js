@@ -94,25 +94,14 @@ var TimeRange = Class.create({
     
     // input into fields
     this.dayNames.each(function(dayName) {
-      $(dayName).value = $$('div.' + dayName + ' .hour').reject(function(s){ 
+      $(dayName).value = $$('div.' + dayName + ' .hour').reject(function(s){
         return s.innerHTML == ''
-      }).map(function(s){ 
-        return s.innerHTML.replace(/<.*>/, '') 
+      }).map(function(s){
+        return s.innerHTML.replace(/<.*>/, '')
       }).join(' ');
-    })
+    });
   }
 });
-
-Element.addMethods({
-  getLastSelectedSibbling: function(element){
-    var element = element;
-    if (element.next().selected){
-      return element.next()
-    } else { 
-      return element 
-    }
-  }
-})
 
 Object.extend(Number.prototype, {
   toHour: function() {
